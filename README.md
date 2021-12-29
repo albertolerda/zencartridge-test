@@ -1,21 +1,16 @@
-# Simple Tarantool Cartridge-based application
-
-This a simplest application based on Tarantool Cartridge.
-
-## Quick start
+# Quick start
 
 To build application and setup topology:
 
 ```bash
 cartridge build
 cartridge start -d
-cartridge replicasets setup --bootstrap-vshard
+# cartridge replicasets setup --bootstrap-vshard
 ```
 
-Now you can visit http://localhost:8081 and see your application's Admin Web UI.
+Now you can visit http://localhost:8081 and see your application's Admin Web UI. Click on the button "Configure" in the router card and check `Generate key`.
 
-**Note**, that application stateboard is always started by default.
-See [`.cartridge.yml`](./.cartridge.yml) file to change this behavior.
+Finally you can browser to `http://localhost:8081/hello`
 
 ## Application
 

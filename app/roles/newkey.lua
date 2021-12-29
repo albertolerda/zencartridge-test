@@ -1,4 +1,5 @@
 local cartridge = require('cartridge')
+require('zenroom')
 
 local function init(opts) -- luacheck: no unused args
     -- if opts.is_master then
@@ -6,7 +7,9 @@ local function init(opts) -- luacheck: no unused args
 
     local httpd = assert(cartridge.service_get('httpd'), "Failed to get httpd service")
     httpd:route({method = 'GET', path = '/hello'}, function()
-        return {body = 'Hello world!'}
+        local kp = ECDH.keygen()
+        return {body = 'Private: ' .. kp.private:hex() ..
+                       '\nPublic: ' .. kp.public:hex() }
     end)
 
     return true
@@ -28,7 +31,7 @@ local function apply_config(conf, opts) -- luacheck: no unused args
 end
 
 return {
-    role_name = 'app.roles.custom',
+    role_name = 'Generate key',
     init = init,
     stop = stop,
     validate_config = validate_config,
