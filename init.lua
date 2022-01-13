@@ -37,6 +37,7 @@ local ok, err = cartridge.cfg({
         'cartridge.roles.vshard-router',
         'cartridge.roles.metrics',
         'app.roles.newkey',
+	'app.roles.candidates',
     },
 })
 
